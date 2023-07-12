@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkt7vcsevxrcl"]
+
+[ext_resource type="Script" path="res://Bala.gd" id="1_dfi85"]
+[ext_resource type="Texture2D" uid="uid://cvd53hnnitema" path="res://Bola de Fuego.png" id="1_gaxgw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gwy0"]
+radius = 14.0
+
+[node name="Bala" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_dfi85")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-7, 0)
+texture = ExtResource("1_gaxgw")
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
+position = Vector2(47, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0gwy0")

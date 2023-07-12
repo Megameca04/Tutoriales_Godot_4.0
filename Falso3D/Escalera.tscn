@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://tcavc461pgcy"]
+
+[ext_resource type="Script" path="res://Escalera.gd" id="1_c8hit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63cea"]
+size = Vector2(24, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wilp"]
+size = Vector2(24, 1)
+
+[node name="Escalera" type="Node2D"]
+script = ExtResource("1_c8hit")
+
+[node name="Sube" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sube"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_63cea")
+
+[node name="Baja" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Baja"]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_4wilp")
+
+[connection signal="body_exited" from="Sube" to="." method="_on_sube_body_exited"]
+[connection signal="body_exited" from="Baja" to="." method="_on_baja_body_exited"]
