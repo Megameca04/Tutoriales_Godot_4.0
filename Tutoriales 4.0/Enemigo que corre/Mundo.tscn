@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bksveltum1eto"]
+
+[ext_resource type="PackedScene" uid="uid://yptg60umgy6q" path="res://Personaje.tscn" id="1_344js"]
+[ext_resource type="PackedScene" uid="uid://clwwn5pd8bh0c" path="res://Enemigo.tscn" id="2_yljn7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l11d2"]
+size = Vector2(20, 646)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vev0u"]
+size = Vector2(1152, 20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 323)
+shape = SubResource("RectangleShape2D_l11d2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1152, 323)
+shape = SubResource("RectangleShape2D_l11d2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 0)
+shape = SubResource("RectangleShape2D_vev0u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 646)
+shape = SubResource("RectangleShape2D_vev0u")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_344js")]
+position = Vector2(318, 377)
+
+[node name="Enemigo" parent="." instance=ExtResource("2_yljn7")]
+position = Vector2(423, 359)

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://k7jyydjxp3qo"]
+
+[ext_resource type="PackedScene" uid="uid://eyulf8huj1ra" path="res://Personaje_AP.tscn" id="1_jg500"]
+[ext_resource type="PackedScene" uid="uid://3fe0tckxpa6w" path="res://Personaje_AS.tscn" id="2_l87wf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpe7d"]
+size = Vector2(1152, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8yag"]
+size = Vector2(20, 640)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkshp"]
+size = Vector2(1154, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7r7r"]
+size = Vector2(20, 641)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 0)
+shape = SubResource("RectangleShape2D_wpe7d")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 320)
+shape = SubResource("RectangleShape2D_j8yag")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(577, 640)
+shape = SubResource("RectangleShape2D_fkshp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1152, 320)
+shape = SubResource("RectangleShape2D_q7r7r")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_jg500")]
+position = Vector2(430, 447)
+scale = Vector2(3, 3)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("2_l87wf")]
+position = Vector2(566, 447)
+scale = Vector2(3, 3)

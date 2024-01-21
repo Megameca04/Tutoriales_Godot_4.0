@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://eyulf8huj1ra"]
+
+[ext_resource type="Script" path="res://Personaje_AP.gd" id="1_c4qju"]
+[ext_resource type="Texture2D" uid="uid://qj60uph332pa" path="res://adventurer-Sheet.png" id="1_o076r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi3yv"]
+size = Vector2(16, 30)
+
+[sub_resource type="Animation" id="Animation_vsygt"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ys8lk"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8, 14]
+}
+
+[sub_resource type="Animation" id="Animation_4t01k"]
+resource_name = "jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [14, 17]
+}
+
+[sub_resource type="Animation" id="Animation_0t3t6"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18, 23]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hr8fi"]
+_data = {
+"fall": SubResource("Animation_0t3t6"),
+"idle": SubResource("Animation_vsygt"),
+"jump": SubResource("Animation_4t01k"),
+"run": SubResource("Animation_ys8lk")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_c4qju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_vi3yv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.01325, 1.03549)
+texture = ExtResource("1_o076r")
+hframes = 7
+vframes = 11
+frame = 23
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hr8fi")
+}
