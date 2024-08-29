@@ -44,6 +44,7 @@ sprite_frames = SubResource("SpriteFrames_t3y7n")
 animation = &"Cebolla"
 
 [node name="Crecimiento" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="Crecimiento" to="." method="_on_crecimiento_timeout"]
