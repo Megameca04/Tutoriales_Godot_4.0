@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddqtfwt5lxaw0"]
+
+[ext_resource type="Script" path="res://Juego de granja/Scripts/Planta.gd" id="1_7s26e"]
+[ext_resource type="Texture2D" uid="uid://hk7rwfbtrc43" path="res://Juego de granja/Assets/Plantas/0.png" id="1_wc62i"]
+[ext_resource type="Texture2D" uid="uid://b2f3ktgq3vn41" path="res://Juego de granja/Assets/Plantas/1.png" id="2_nnsyo"]
+[ext_resource type="Texture2D" uid="uid://t5tuvq3qx086" path="res://Juego de granja/Assets/Plantas/2.png" id="3_674wu"]
+[ext_resource type="Texture2D" uid="uid://c3xry13swfgqo" path="res://Juego de granja/Assets/Plantas/3.png" id="4_mnpv0"]
+[ext_resource type="Texture2D" uid="uid://dasy15jtgbn5f" path="res://Juego de granja/Assets/Plantas/4.png" id="5_q5qop"]
+[ext_resource type="Texture2D" uid="uid://h6n2ghefieju" path="res://Juego de granja/Assets/Plantas/5.png" id="6_yh5ho"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t3y7n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wc62i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nnsyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_674wu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mnpv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q5qop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yh5ho")
+}],
+"loop": true,
+"name": &"Cebolla",
+"speed": 5.0
+}]
+
+[node name="Planta" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_7s26e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_t3y7n")
+animation = &"Cebolla"
+
+[node name="Crecimiento" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Crecimiento" to="." method="_on_crecimiento_timeout"]
