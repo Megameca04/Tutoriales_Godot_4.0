@@ -9,7 +9,6 @@ func click_a_mapa(pos : Vector2) -> Vector2i:
 	var pos_mapa : Vector2i = local_to_map(pos_click)
 	return pos_mapa
 
-
 func _input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseButton:
@@ -45,4 +44,9 @@ func _input(event: InputEvent) -> void:
 					conj_plantas.append(planta)
 					
 					add_child(planta)
-					
+
+func _on_timer_timeout():
+	
+	for i in get_used_cells():
+		if get_cell_tile_data(i).get_custom_data("Agua"):
+			set_cell(i,1,Vector2(1,0))
