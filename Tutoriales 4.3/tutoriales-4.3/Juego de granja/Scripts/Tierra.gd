@@ -15,8 +15,9 @@ func _input(event: InputEvent) -> void:
 		
 		if event.pressed:
 			
+			var lugar_click = click_a_mapa(event.global_position)
+			
 			if event.button_index == 1:
-				var lugar_click = click_a_mapa(event.global_position)
 				
 				set_cell(lugar_click,1,Vector2i(0,0))
 				
@@ -26,12 +27,12 @@ func _input(event: InputEvent) -> void:
 				
 			elif event.button_index == 2:
 				
-				var lugar_click = click_a_mapa(event.global_position)
 				var puede_col = true
 				
 				for i in conj_plantas: 
 					if i.global_position == to_global(map_to_local(lugar_click)):
 						puede_col = false
+						break
 				
 				if puede_col:
 					
@@ -48,5 +49,12 @@ func _input(event: InputEvent) -> void:
 func _on_timer_timeout():
 	
 	for i in get_used_cells():
+		
 		if get_cell_tile_data(i).get_custom_data("Agua"):
+			
 			set_cell(i,1,Vector2(1,0))
+			
+			for p in conj_plantas:
+				if map_to_local(i) == p.global_position:
+					p.cell = get_cell_tile_data(i)
+					break
